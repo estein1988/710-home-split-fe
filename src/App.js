@@ -3,13 +3,16 @@ import './App.css'
 import PrivateRoute from './components/PrivateRoute'
 import Login from './components/Login'
 import { Redirect, Route, Switch } from 'react-router-dom'
+
 const loginURL = 'http://localhost:8000/login/'
 const profileURL = 'http://localhost:8000/profile/'
+const homesURL = 'http://localhost:8000/homes/'
 
 class App extends Component {
 
   state = {
-    user: []
+    user: [],
+    allHomes: []
   }
 
   componentDidMount(){
@@ -22,6 +25,15 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(result => this.setState({user: result}))
+      
+      fetch(homesURL, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(result => this.setState({allHomes: result}))
     }
   }
 
@@ -43,7 +55,7 @@ class App extends Component {
     return (
       <div className="App">
       <Switch>
-        <PrivateRoute exact path='/' user={this.state.user}/>
+        <PrivateRoute exact path='/' user={this.state.user} />
         <Route path='/login' render={(props) => <Login {...props} login={this.login} />} />
         <Route render={() => <Redirect to="/" /> } />
       </Switch>
