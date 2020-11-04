@@ -8,11 +8,16 @@ class CardsContainer extends Component {
             home => <HouseCard
                 key={home.id}
                 home={home}
+                clickAction={this.props.clickAction}
             />
         )
+
         return (
             <div className="cards-container">
                 {renderHomes()}
+                <div>
+                {/* <HouseCard user={this.props.user} /> */}
+                </div>
             </div>
         )
     }

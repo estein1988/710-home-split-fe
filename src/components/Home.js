@@ -8,7 +8,7 @@ export default class Home extends Component {
             <div>
                 {/* <h1>Welcome Back {this.props.user.username}!</h1> */}
                 <div>
-                    <CardsContainer allHomes={this.props.allHomes}/>
+                    <CardsContainer allHomes={this.props.allHomes} user={this.props.user} clickAction={this.props.clickAction}/>
                 </div>
                 <div className="googleMap">
                     <GoogleMap allHomes={this.props.allHomes} />
