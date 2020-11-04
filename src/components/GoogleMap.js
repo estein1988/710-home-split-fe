@@ -1,30 +1,17 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-const homesURL = 'http://localhost:8000/homes/'
 
 const mapStyles = {
     width: '75%',
-    height: '75%'
+    height: '75%',
 }
 
 export class MapContainer extends Component {
 
     state = {
-        allHomes: [],
         showingInfoWindow: false,  
         activeMarker: [],        
         selectedPlace: []        
-    }
-
-    componentDidMount(){
-        fetch(homesURL, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.token}`
-            }
-        })
-        .then(response => response.json())
-        .then(result => this.setState({allHomes: result}))
     }
 
     onMarkerClick = (props, marker, e) =>
@@ -56,9 +43,10 @@ export class MapContainer extends Component {
                     }
                 }
             >
-            {this.state.allHomes.map(home => (
+            {this.props.allHomes.map(home => (
                 <Marker 
                     onClick={this.onMarkerClick}
+                    key={home.street}
                     street={home.street}
                     city={home.city}
                     state={home.state}
@@ -92,5 +80,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyAZ7VU-onD4lHSYOhP1n8-ur44DWaJEkpk'
+    apiKey: 
 })(MapContainer);

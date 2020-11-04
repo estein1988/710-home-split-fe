@@ -3,5 +3,26 @@
 }
 
 .googleMap{
-  padding-left: 12rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.home-cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 1rem;
+  justify-content: center;
 }

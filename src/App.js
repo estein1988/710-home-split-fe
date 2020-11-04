@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <div className="App">
       <Switch>
-        <PrivateRoute exact path='/' user={this.state.user} />
+        <PrivateRoute exact path='/' user={this.state.user} allHomes={this.state.allHomes}/>
         <Route path='/login' render={(props) => <Login {...props} login={this.login} />} />
         <Route render={() => <Redirect to="/" /> } />
       </Switch>

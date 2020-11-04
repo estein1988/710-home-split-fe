@@ -3,11 +3,11 @@ import Home from './Home'
 import { Route, Redirect } from 'react-router-dom'
 
 export default function PrivateRoute(props){
-    const {user} = props
+    const {user, allHomes} = props
 
     return <Route {...props} render={(routerProps) => {
         return localStorage.token 
-            ? <Home {...routerProps} user={user}/> 
+            ? <Home {...routerProps} user={user} allHomes={allHomes}/> 
             : <Redirect to="/login" />
     }} />
 }
